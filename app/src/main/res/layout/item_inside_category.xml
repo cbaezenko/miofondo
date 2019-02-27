@@ -8,7 +8,7 @@
             android:src="@drawable/ic_launcher_background"
             android:layout_width="0dp"
             android:layout_height="0dp" tools:srcCompat="@tools:sample/backgrounds/scenic[7]"
-            android:id="@+id/imageView"
+            android:id="@+id/iv_category_image"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/guideline" android:scaleType="centerCrop"/>
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_category_title" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_category_image" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"/>
