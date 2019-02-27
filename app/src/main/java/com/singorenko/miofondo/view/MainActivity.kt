@@ -1,7 +1,8 @@
-package com.singorenko.miofondo
+package com.singorenko.miofondo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.singorenko.miofondo.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,6 +13,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container, GridCategoryFragment.newInstance()).commit()
+        supportFragmentManager.beginTransaction().add(
+            R.id.fragment_container,
+            GridCategoryFragment.newInstance()
+        ).commit()
     }
 }
