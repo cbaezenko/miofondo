@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.singorenko.miofondo.R
 import com.singorenko.miofondo.helper.adapter.GridSelectedAdapter
 import com.singorenko.miofondo.manager.CategorySelectedListener
-import com.singorenko.miofondo.model.CategoryList
-import com.singorenko.miofondo.model.CategoryModel
 import kotlinx.android.synthetic.main.fragment_grid_selected_category.*
 import java.lang.ClassCastException
 
@@ -29,7 +27,7 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener {
         mGridSelectedCategoryListener.onGridSelectedCategoryListener(imageUrl)
     }
 
-    var mCategorySelectedList: ArrayList<CategoryModel> = CategoryList().getCategory()
+    var mCategorySelectedList: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +53,13 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        mCategorySelectedList.add("https://images.idgesg.net/images/article/2017/08/android_robot_logo_by_ornecolorada_cc0_via_pixabay1904852_wide-100732483-large.jpg")
+        mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3kiXoSMVj9shVwVpLwFRhSQSD2ySPqXmpHo_IjG6jz-dvD5ea")
+        mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9gMn3IpapLQmRWjJXaBi3A32hKFNVW8NjmKcMDGbQOxasd8BG")
+        mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvTk8w7BP38fbkcN8Dofbz41ockUONuUJetVrW3YcvwiqEI8-X")
+
+
         rv_grid_selected_category.layoutManager = GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
         rv_grid_selected_category.adapter = GridSelectedAdapter(mCategorySelectedList, context!!, this)
     }

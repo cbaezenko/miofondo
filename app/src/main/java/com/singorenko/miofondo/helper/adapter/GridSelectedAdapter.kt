@@ -8,11 +8,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.singorenko.miofondo.R
 import com.singorenko.miofondo.manager.CategorySelectedListener
-import com.singorenko.miofondo.model.CategoryModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid_selected_category.view.*
 
 class GridSelectedAdapter(
-    private val categorySelectedList: ArrayList<CategoryModel>,
+    private val categorySelectedList: ArrayList<String>,
     private val context: Context,
     val mCategorySelectedListener: CategorySelectedListener
 ) :
@@ -28,18 +28,19 @@ class GridSelectedAdapter(
     }
 
     override fun getItemCount(): Int {
-        return 20
+        return categorySelectedList.size
     }
 
     override fun onBindViewHolder(holder: GridSelectedViewHolder, position: Int) {
+        Picasso.get().load(categorySelectedList[position]).into(holder.ivSelectedCategoryImage)
     }
 
     inner class GridSelectedViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         override fun onClick(v: View?) {
-            mCategorySelectedListener.onClickCategorySelected("url")
+            mCategorySelectedListener.onClickCategorySelected(categorySelectedList[adapterPosition])
         }
 
-        private var ivSelectedCategoryImage: ImageView = view.iv_selected_category_image
+        var ivSelectedCategoryImage: ImageView = view.iv_selected_category_image
 
         init {
             ivSelectedCategoryImage.setOnClickListener(this)
