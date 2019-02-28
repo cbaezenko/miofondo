@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MioFondo</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_text_accept">@android:string/ok</string>
+    <string name="all_text_cancel">@android:string/cancel</string>
+
+    <string name="dialog_text_title">Wallpaper set</string>
+    <string name="dialog_text_question_message">Set this image as wallpaper?</string>
 </resources>

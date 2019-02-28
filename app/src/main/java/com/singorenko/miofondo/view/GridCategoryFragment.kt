@@ -21,15 +21,15 @@ class GridCategoryFragment : Fragment(), CategoryAdapterListener {
     lateinit var mGridCategoryListener: GridCategoryListener
     var mCategoryList: ArrayList<CategoryModel> = CategoryList().getCategory()
 
-    interface GridCategoryListener{
+    interface GridCategoryListener {
         fun onCategoryClicked(category: String)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        try{
+        try {
             mGridCategoryListener = context as GridCategoryListener
-        }catch (e: ClassCastException){
+        } catch (e: ClassCastException) {
             throw ClassCastException(activity.toString() + " must implement GridCategoryListener")
         }
     }
@@ -50,7 +50,7 @@ class GridCategoryFragment : Fragment(), CategoryAdapterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_grid_category.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        rv_grid_category.adapter = GridCategoryAdapter(mCategoryList, context!!,this)
+        rv_grid_category.adapter = GridCategoryAdapter(mCategoryList, context!!, this)
     }
 
     companion object {

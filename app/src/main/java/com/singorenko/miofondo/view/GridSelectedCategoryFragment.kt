@@ -19,7 +19,7 @@ import java.lang.ClassCastException
 
 class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener {
 
-    interface GridSelectedCategoryListener{
+    interface GridSelectedCategoryListener {
         fun onGridSelectedCategoryListener(string: String)
     }
 
@@ -41,8 +41,8 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener {
         super.onAttach(context)
         try {
             mGridSelectedCategoryListener = context as GridSelectedCategoryListener
-        } catch (e: ClassCastException){
-            throw ClassCastException(activity.toString()+" must implement GridSelectedCategoryListener")
+        } catch (e: ClassCastException) {
+            throw ClassCastException(activity.toString() + " must implement GridSelectedCategoryListener")
         }
     }
 

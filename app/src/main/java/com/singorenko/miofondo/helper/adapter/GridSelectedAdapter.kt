@@ -11,12 +11,21 @@ import com.singorenko.miofondo.manager.CategorySelectedListener
 import com.singorenko.miofondo.model.CategoryModel
 import kotlinx.android.synthetic.main.item_grid_selected_category.view.*
 
-class GridSelectedAdapter (private val categorySelectedList: ArrayList<CategoryModel>,
-                           private  val context: Context,
-                            val mCategorySelectedListener: CategorySelectedListener) :
-RecyclerView.Adapter<GridSelectedAdapter.GridSelectedViewHolder>(){
+class GridSelectedAdapter(
+    private val categorySelectedList: ArrayList<CategoryModel>,
+    private val context: Context,
+    val mCategorySelectedListener: CategorySelectedListener
+) :
+    RecyclerView.Adapter<GridSelectedAdapter.GridSelectedViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridSelectedViewHolder {
-    return GridSelectedViewHolder(LayoutInflater.from(context).inflate(R.layout.item_grid_selected_category, parent, false))      }
+        return GridSelectedViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.item_grid_selected_category,
+                parent,
+                false
+            )
+        )
+    }
 
     override fun getItemCount(): Int {
         return 20
@@ -24,7 +33,6 @@ RecyclerView.Adapter<GridSelectedAdapter.GridSelectedViewHolder>(){
 
     override fun onBindViewHolder(holder: GridSelectedViewHolder, position: Int) {
     }
-
 
     inner class GridSelectedViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         override fun onClick(v: View?) {

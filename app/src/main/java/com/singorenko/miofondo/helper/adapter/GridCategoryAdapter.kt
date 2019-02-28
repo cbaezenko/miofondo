@@ -1,7 +1,6 @@
 package com.singorenko.miofondo.helper.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,8 +45,6 @@ class GridCategoryAdapter(
     inner class GridCategoryViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         override fun onClick(v: View?) {
             val clickedPosition = adapterPosition
-            Log.d("TAG", categoryList[clickedPosition].title+ clickedPosition)
-
             mFragmentNavListener.onCategoryClicked(categoryList[clickedPosition].title)
         }
 
