@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.singorenko.miofondo.R
 
-class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListener {
-//    override fun onCategoryClicked(category: String) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
+class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListener,GridSelectedCategoryFragment.GridSelectedCategoryListener {
+
+    override fun onGridSelectedCategoryListener(string: String) {
+     supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+         SelectedImageFragment.newInstance()).commit()
+    }
+
     override fun onCategoryClicked(category: String) {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
             GridSelectedCategoryFragment.newInstance()).commit()
