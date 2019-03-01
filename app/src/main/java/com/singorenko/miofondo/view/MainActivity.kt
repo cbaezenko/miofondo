@@ -2,8 +2,12 @@ package com.singorenko.miofondo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.singorenko.miofondo.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListener,
  GridSelectedCategoryFragment.GridSelectedCategoryListener
@@ -54,6 +58,26 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
                     GridCategoryFragment.newInstance(twoPanes)
                 ).commit()
             }
+        }
+
+        setSupportActionBar(toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_licenses -> {
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
         }
     }
 }

@@ -7,5 +7,6 @@
     <string name="dialog_text_title">Wallpaper set</string>
     <string name="dialog_text_question_message">Set this image as wallpaper?</string>
 
+    <string name="menu_title_about_application">About</string>
     <string name="toolbar_title_selected_image">Selected Image</string>
 </resources>
