@@ -2,30 +2,56 @@ package com.singorenko.miofondo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.singorenko.miofondo.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListener,
-    GridSelectedCategoryFragment.GridSelectedCategoryListener {
+ GridSelectedCategoryFragment.GridSelectedCategoryListener
+{
+    var twoPanes: Boolean = false
 
     override fun onGridSelectedCategoryListener(string: String) {
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SelectedImageFragment.newInstance())
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container_selected, SelectedImageFragment.newInstance(twoPanes))
+            .addToBackStack(null)
             .commit()
     }
 
     override fun onCategoryClicked(category: String) {
-        supportFragmentManager.beginTransaction().replace(
-            R.id.fragment_container,
-            GridSelectedCategoryFragment.newInstance()
-        ).commit()
+        //twoPanes false means phone
+        if(!twoPanes) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_selected, GridSelectedCategoryFragment.newInstance(twoPanes))
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().add(
-            R.id.fragment_container,
-            GridCategoryFragment.newInstance()
-        ).commit()
+        if (findViewById<ConstraintLayout>(R.id.layout_two_pane) != null){
+            twoPanes = true
+        }
+
+        if(savedInstanceState == null) {
+            if(twoPanes){
+             supportFragmentManager.beginTransaction()
+                 .add(R.id.fragment_container_category, GridCategoryFragment.newInstance(twoPanes))
+                 .commit()
+             supportFragmentManager.beginTransaction()
+                 .add(R.id.fragment_container_selected, GridSelectedCategoryFragment.newInstance(twoPanes))
+                 .commit()
+            }else {
+                supportFragmentManager.beginTransaction().add(
+                    R.id.fragment_container,
+                    GridCategoryFragment.newInstance(twoPanes)
+                ).commit()
+            }
+
+            toolbar.title = getString(R.string.app_name)
+            setSupportActionBar(toolbar)
+        }
     }
 }

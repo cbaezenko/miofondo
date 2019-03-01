@@ -16,10 +16,14 @@ import com.singorenko.miofondo.model.CategoryModel
 import kotlinx.android.synthetic.main.fragment_grid_categoy.*
 import java.lang.ClassCastException
 
+private const val ARG_TWO_PANES = "twoPanes"
+
 class GridCategoryFragment : Fragment(), CategoryAdapterListener {
 
     lateinit var mGridCategoryListener: GridCategoryListener
     var mCategoryList: ArrayList<CategoryModel> = CategoryList().getCategory()
+
+    var twoPanes: Boolean = false
 
     interface GridCategoryListener {
         fun onCategoryClicked(category: String)
@@ -40,7 +44,9 @@ class GridCategoryFragment : Fragment(), CategoryAdapterListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {}
+        arguments?.let {
+            twoPanes = it.getBoolean(ARG_TWO_PANES)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,14 +56,16 @@ class GridCategoryFragment : Fragment(), CategoryAdapterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_grid_category.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        rv_grid_category.adapter = GridCategoryAdapter(mCategoryList, context!!, this)
+        rv_grid_category.adapter = GridCategoryAdapter(mCategoryList, context!!, this, twoPanes)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() =
+        fun newInstance(twoPanes: Boolean) =
             GridCategoryFragment().apply {
-                arguments = Bundle().apply {}
+                arguments = Bundle().apply {
+                    putBoolean(ARG_TWO_PANES, twoPanes)
+                }
             }
     }
 }

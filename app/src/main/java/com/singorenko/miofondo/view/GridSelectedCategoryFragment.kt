@@ -15,33 +15,37 @@ import com.singorenko.miofondo.manager.CategorySelectedListener
 import kotlinx.android.synthetic.main.fragment_grid_selected_category.*
 import java.lang.ClassCastException
 
+private const val ARG_TWO_PANES = "twoPanes"
+
 class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener {
+
+    var twoPanes: Boolean = false
 
     interface GridSelectedCategoryListener {
         fun onGridSelectedCategoryListener(string: String)
     }
 
     lateinit var mGridSelectedCategoryListener: GridSelectedCategoryListener
+    var mCategorySelectedList: ArrayList<String> = ArrayList()
 
     override fun onClickCategorySelected(imageUrl: String) {
         mGridSelectedCategoryListener.onGridSelectedCategoryListener(imageUrl)
     }
 
-    var mCategorySelectedList: ArrayList<String> = ArrayList()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            twoPanes = it.getBoolean(ARG_TWO_PANES)
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        try {
-            mGridSelectedCategoryListener = context as GridSelectedCategoryListener
-        } catch (e: ClassCastException) {
-            throw ClassCastException(activity.toString() + " must implement GridSelectedCategoryListener")
-        }
+            try {
+                mGridSelectedCategoryListener = context as GridSelectedCategoryListener
+            } catch (e: ClassCastException) {
+                throw ClassCastException(activity.toString() + " must implement GridSelectedCategoryListener")
+            }
     }
 
     override fun onCreateView(
@@ -59,16 +63,16 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener {
         mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9gMn3IpapLQmRWjJXaBi3A32hKFNVW8NjmKcMDGbQOxasd8BG")
         mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvTk8w7BP38fbkcN8Dofbz41ockUONuUJetVrW3YcvwiqEI8-X")
 
-
         rv_grid_selected_category.layoutManager = GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
-        rv_grid_selected_category.adapter = GridSelectedAdapter(mCategorySelectedList, context!!, this)
+        rv_grid_selected_category.adapter = GridSelectedAdapter(mCategorySelectedList, context!!, this, twoPanes)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() =
+        fun newInstance(twoPanes: Boolean) =
             GridSelectedCategoryFragment().apply {
                 arguments = Bundle().apply {
+                    putBoolean(ARG_TWO_PANES, twoPanes)
                 }
             }
     }

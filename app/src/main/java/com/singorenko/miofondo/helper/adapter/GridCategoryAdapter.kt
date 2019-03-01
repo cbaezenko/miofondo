@@ -1,6 +1,7 @@
 package com.singorenko.miofondo.helper.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.singorenko.miofondo.R
 import com.singorenko.miofondo.manager.CategoryAdapterListener
 import com.singorenko.miofondo.model.CategoryModel
+import com.singorenko.miofondo.view.GridSelectedCategoryActivity
 import kotlinx.android.synthetic.main.item_category.view.*
 import kotlinx.android.synthetic.main.item_inside_category.view.*
 
 class GridCategoryAdapter(
     private val categoryList: ArrayList<CategoryModel>,
     private val context: Context,
-    val mFragmentNavListener: CategoryAdapterListener
+    val mFragmentNavListener: CategoryAdapterListener,
+    val twoPanes: Boolean
 ) :
     RecyclerView.Adapter<GridCategoryAdapter.GridCategoryViewHolder>() {
 
@@ -41,11 +44,15 @@ class GridCategoryAdapter(
         holder.ivCategoryImage.setImageDrawable(context.resources.getDrawable(categoryList[position].image))
     }
 
-
     inner class GridCategoryViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         override fun onClick(v: View?) {
             val clickedPosition = adapterPosition
-            mFragmentNavListener.onCategoryClicked(categoryList[clickedPosition].title)
+            if(twoPanes) {
+                mFragmentNavListener.onCategoryClicked(categoryList[clickedPosition].title)
+            }else{
+                val intent = Intent(context, GridSelectedCategoryActivity::class.java)
+                context.startActivity(intent)
+            }
         }
 
         var cvCategory: CardView = view.cv_category
