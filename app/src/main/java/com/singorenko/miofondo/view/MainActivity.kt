@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.singorenko.miofondo.R
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListener,
  GridSelectedCategoryFragment.GridSelectedCategoryListener
@@ -19,9 +18,15 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
 
     override fun onCategoryClicked(category: String) {
         //twoPanes false means phone
-        if(!twoPanes) {
+        if(twoPanes){
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_selected, GridSelectedCategoryFragment.newInstance(twoPanes))
+                .addToBackStack(null)
+                .commit()
+        }
+        else {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, GridSelectedCategoryFragment.newInstance(twoPanes))
                 .addToBackStack(null)
                 .commit()
         }
@@ -49,9 +54,6 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
                     GridCategoryFragment.newInstance(twoPanes)
                 ).commit()
             }
-
-            toolbar.title = getString(R.string.app_name)
-            setSupportActionBar(toolbar)
         }
     }
 }

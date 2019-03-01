@@ -8,10 +8,13 @@
         tools:context=".view.SelectedImageActivity">
 
     <androidx.appcompat.widget.Toolbar
+            android:alpha="0.4"
+            app:title="@string/toolbar_title_selected_image"
+            app:titleTextColor="@android:color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            android:theme="?attr/actionBarTheme"
+            android:theme="@style/AppTheme"
             android:minHeight="?attr/actionBarSize"
             android:id="@+id/toolbar_selected_image" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
