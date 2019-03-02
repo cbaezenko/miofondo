@@ -55,8 +55,10 @@ class GridCategoryFragment : Fragment(), CategoryAdapterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rv_grid_category.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        rv_grid_category.adapter = GridCategoryAdapter(mCategoryList, context!!, this, twoPanes)
+        if (savedInstanceState == null) {
+            rv_grid_category.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+            rv_grid_category.adapter = GridCategoryAdapter(mCategoryList, context!!, this, twoPanes)
+        }
     }
 
     companion object {

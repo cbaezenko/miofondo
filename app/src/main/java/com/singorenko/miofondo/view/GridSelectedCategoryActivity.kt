@@ -7,17 +7,29 @@ import kotlinx.android.synthetic.main.activity_grid_selected_category.*
 
 class GridSelectedCategoryActivity : AppCompatActivity(), GridSelectedCategoryFragment.GridSelectedCategoryListener {
 
+    private var titleCategory: String = ""
+
     override fun onGridSelectedCategoryListener(string: String) {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_grid_selected_category)
 
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, GridSelectedCategoryFragment.newInstance(false))
-            .commit()
+        if(intent.getStringExtra(ARG_TITLE_CATEGORY) != null) {
 
-        setSupportActionBar(toolbar_selected_category)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            titleCategory = intent.getStringExtra(ARG_TITLE_CATEGORY)
+            toolbar_selected_category.title = titleCategory
+
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, GridSelectedCategoryFragment.newInstance(false))
+                .commit()
+
+            setSupportActionBar(toolbar_selected_category)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    companion object {
+        public const val ARG_TITLE_CATEGORY = "ARG_TITLE_CATEGORY"
     }
 }

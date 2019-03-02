@@ -13,6 +13,7 @@ import com.singorenko.miofondo.R
 import com.singorenko.miofondo.manager.CategoryAdapterListener
 import com.singorenko.miofondo.model.CategoryModel
 import com.singorenko.miofondo.view.GridSelectedCategoryActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_category.view.*
 import kotlinx.android.synthetic.main.item_inside_category.view.*
 
@@ -41,7 +42,7 @@ class GridCategoryAdapter(
 
     override fun onBindViewHolder(holder: GridCategoryViewHolder, position: Int) {
         holder.tvCategoryTitle.text = categoryList[position].title
-        holder.ivCategoryImage.setImageDrawable(context.resources.getDrawable(categoryList[position].image))
+        Picasso.get().load(categoryList[position].urlImage).into(holder.ivCategoryImage)
     }
 
     inner class GridCategoryViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
@@ -51,6 +52,7 @@ class GridCategoryAdapter(
                 mFragmentNavListener.onCategoryClicked(categoryList[clickedPosition].title)
             }else{
                 val intent = Intent(context, GridSelectedCategoryActivity::class.java)
+                intent.putExtra(GridSelectedCategoryActivity.ARG_TITLE_CATEGORY, categoryList[adapterPosition].title )
                 context.startActivity(intent)
             }
         }
