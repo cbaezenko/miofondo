@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MioFondo</string>
+    <string name="app_name">MiFondo</string>
 
     <string name="all_text_accept">@android:string/ok</string>
     <string name="all_text_cancel">@android:string/cancel</string>
