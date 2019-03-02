@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
 {
     var twoPanes: Boolean = false
 
-    override fun onGridSelectedCategoryListener(string: String) {
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container_selected, SelectedImageFragment.newInstance(twoPanes))
+    override fun onGridSelectedCategoryListener(urlImage: String) {
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container_selected, SelectedImageFragment.newInstance(twoPanes, urlImage))
             .addToBackStack(null)
             .commit()
     }

@@ -44,6 +44,7 @@ class GridSelectedAdapter(
                mCategorySelectedListener.onClickCategorySelected(categorySelectedList[adapterPosition])
            }else{
                 val intent = Intent(context, SelectedImageActivity::class.java)
+               intent.putExtra(SelectedImageActivity.ARG_URL_IMAGE, categorySelectedList[adapterPosition])
                context.startActivity(intent)
            }
         }

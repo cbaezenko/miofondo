@@ -8,7 +8,6 @@
         tools:context=".view.SelectedImageActivity">
 
     <androidx.appcompat.widget.Toolbar
-            android:alpha="0.4"
             app:title="@string/toolbar_title_selected_image"
             app:titleTextColor="@android:color/white"
             android:layout_width="0dp"

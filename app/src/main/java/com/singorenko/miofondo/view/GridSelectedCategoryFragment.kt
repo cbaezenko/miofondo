@@ -58,13 +58,19 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        fillCategorySelectedList()
+
+        rv_grid_selected_category.layoutManager = GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
+        rv_grid_selected_category.adapter = GridSelectedAdapter(mCategorySelectedList, context!!, this, twoPanes)
+    }
+
+    fun fillCategorySelectedList(){
         mCategorySelectedList.add("https://images.idgesg.net/images/article/2017/08/android_robot_logo_by_ornecolorada_cc0_via_pixabay1904852_wide-100732483-large.jpg")
         mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3kiXoSMVj9shVwVpLwFRhSQSD2ySPqXmpHo_IjG6jz-dvD5ea")
         mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9gMn3IpapLQmRWjJXaBi3A32hKFNVW8NjmKcMDGbQOxasd8BG")
         mCategorySelectedList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvTk8w7BP38fbkcN8Dofbz41ockUONuUJetVrW3YcvwiqEI8-X")
+        mCategorySelectedList.add("https://images.pexels.com/photos/753339/pexels-photo-753339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 
-        rv_grid_selected_category.layoutManager = GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
-        rv_grid_selected_category.adapter = GridSelectedAdapter(mCategorySelectedList, context!!, this, twoPanes)
     }
 
     companion object {
