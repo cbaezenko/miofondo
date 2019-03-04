@@ -21,7 +21,7 @@ class GridSelectedCategoryActivity : AppCompatActivity(), GridSelectedCategoryFr
             toolbar_selected_category.title = titleCategory
 
             supportFragmentManager.beginTransaction()
-                .add(R.id.fragment_container, GridSelectedCategoryFragment.newInstance(false))
+                .add(R.id.fragment_container, GridSelectedCategoryFragment.newInstance(false, titleCategory))
                 .commit()
 
             setSupportActionBar(toolbar_selected_category)
@@ -30,6 +30,6 @@ class GridSelectedCategoryActivity : AppCompatActivity(), GridSelectedCategoryFr
     }
 
     companion object {
-        public const val ARG_TITLE_CATEGORY = "ARG_TITLE_CATEGORY"
+        const val ARG_TITLE_CATEGORY = "ARG_TITLE_CATEGORY"
     }
 }

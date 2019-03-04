@@ -7,12 +7,14 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.singorenko.miofondo.R
+import com.singorenko.miofondo.helper.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListener,
  GridSelectedCategoryFragment.GridSelectedCategoryListener
 {
     var twoPanes: Boolean = false
+    val mConstants: Constants = Constants()
 
     override fun onGridSelectedCategoryListener(urlImage: String) {
         supportFragmentManager.beginTransaction().add(R.id.fragment_container_selected, SelectedImageFragment.newInstance(twoPanes, urlImage))
@@ -24,13 +26,13 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
         //twoPanes false means phone
         if(twoPanes){
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_selected, GridSelectedCategoryFragment.newInstance(twoPanes))
+                .replace(R.id.fragment_container_selected, GridSelectedCategoryFragment.newInstance(twoPanes, category))
                 .addToBackStack(null)
                 .commit()
         }
         else {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, GridSelectedCategoryFragment.newInstance(twoPanes))
+                .replace(R.id.fragment_container, GridSelectedCategoryFragment.newInstance(twoPanes, category))
                 .addToBackStack(null)
                 .commit()
         }
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
                  .add(R.id.fragment_container_category, GridCategoryFragment.newInstance(twoPanes))
                  .commit()
              supportFragmentManager.beginTransaction()
-                 .add(R.id.fragment_container_selected, GridSelectedCategoryFragment.newInstance(twoPanes))
+                 .add(R.id.fragment_container_selected, GridSelectedCategoryFragment.newInstance(twoPanes, mConstants.defaultEmpty))
                  .commit()
             }else {
                 supportFragmentManager.beginTransaction().add(

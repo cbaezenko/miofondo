@@ -1,5 +1,4 @@
 package com.singorenko.miofondo.model
-import com.singorenko.miofondo.R
 
 var categoryList: ArrayList<CategoryModel> = ArrayList()
 

@@ -2,6 +2,7 @@ package com.singorenko.miofondo.helper.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ class GridSelectedAdapter(
     }
 
     override fun onBindViewHolder(holder: GridSelectedViewHolder, position: Int) {
+        Log.d("adapter", "que hay en el adapter"+categorySelectedList[0])
         Picasso.get().load(categorySelectedList[position]).into(holder.ivSelectedCategoryImage)
     }
 
