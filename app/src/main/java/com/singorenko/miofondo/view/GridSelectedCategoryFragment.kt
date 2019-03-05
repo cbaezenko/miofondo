@@ -28,7 +28,9 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener, GridS
      */
     override fun getUrlImagesView(arrayListUrlImages: ArrayList<String>) {
         mCategorySelectedList = arrayListUrlImages
-        rv_grid_selected_category.adapter = GridSelectedAdapter(mCategorySelectedList, context!!, this, twoPanes)
+        if (mCategorySelectedList.size > 0) {
+            rv_grid_selected_category.adapter = GridSelectedAdapter(mCategorySelectedList, context!!, this, twoPanes)
+        }
     }
 
     private val spanCounts: Int = 3
