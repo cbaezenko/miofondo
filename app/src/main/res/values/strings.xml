@@ -5,10 +5,13 @@
     <string name="all_text_cancel">@android:string/cancel</string>
 
     <string name="dialog_text_title">Wallpaper set</string>
-    <string name="dialog_text_question_message">Set this image as wallpaper?</string>
+    <string name="dialog_text_question_message">Set this image as wallpaper? </string>
 
     <string name="menu_title_about_application">About</string>
     <string name="toolbar_title_selected_image">Selected Image</string>
 
     <string name="toolbar_title_about_app">About App</string>
+
+    <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
 </resources>

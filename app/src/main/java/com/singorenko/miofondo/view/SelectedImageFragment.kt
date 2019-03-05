@@ -4,11 +4,17 @@ import android.app.WallpaperManager
 import android.graphics.Bitmap
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 
 import com.singorenko.miofondo.R
 import com.squareup.picasso.Picasso
@@ -22,6 +28,8 @@ class SelectedImageFragment : Fragment() {
 
     var twoPanes: Boolean = false
     var urlImage: String = ""
+
+    private lateinit var mInterstitialAd: InterstitialAd
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +49,42 @@ class SelectedImageFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(context, "ca-app-pub-3940256099942544~3347511713")
+
+        mInterstitialAd = InterstitialAd(context)
+
+        //sample
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdFailedToLoad(errorCode: Int) {
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when the ad is displayed.
+                Toast.makeText(context, "setting the wallpaper", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the interstitial ad is closed.
+                Toast.makeText(context, "Wallpaper ready", Toast.LENGTH_LONG).show()
+            }
+        }
+
+
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+
+
+
         Picasso.get().load(urlImage)
             .into(iv_selected_image)
 
@@ -49,6 +93,13 @@ class SelectedImageFragment : Fragment() {
             builder.setTitle(getString(R.string.dialog_text_title))
             builder.setMessage(getString(R.string.dialog_text_question_message))
             builder.setPositiveButton(getString(R.string.all_text_accept)) { _, _ ->
+
+                if (mInterstitialAd.isLoaded) {
+                    mInterstitialAd.show()
+                } else {
+                    Log.d(tag, "The interstitial wasn't loaded yet")
+                }
+
                 DoAsync {
                     setWallpaper(urlImage)
                 }.execute()
