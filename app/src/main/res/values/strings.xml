@@ -9,4 +9,6 @@
 
     <string name="menu_title_about_application">About</string>
     <string name="toolbar_title_selected_image">Selected Image</string>
+
+    <string name="toolbar_title_about_app">About App</string>
 </resources>

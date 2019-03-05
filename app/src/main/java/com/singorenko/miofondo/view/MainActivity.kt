@@ -1,5 +1,6 @@
 package com.singorenko.miofondo.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -73,6 +74,14 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_licenses -> {
+            if(twoPanes){
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.fragment_container_selected, LicenseFragment.newInstance())
+                    .commit()
+            }else {
+                val intent = Intent(this, LicenseActivity::class.java)
+                startActivity(intent)
+            }
             true
         }
 

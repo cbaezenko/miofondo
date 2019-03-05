@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 <item android:id="@+id/action_licenses"
       android:title="@string/menu_title_about_application"
-      android:icon="@android:drawable/ic_dialog_info"
+      android:icon="@drawable/ic_info_white_24dp"
       app:showAsAction="always"/>
 </menu>

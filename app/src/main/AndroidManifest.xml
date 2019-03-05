@@ -12,16 +12,25 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".view.SelectedImageActivity"
-        android:parentActivityName=".view.GridSelectedCategoryActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-            android:value=".view.GridSelectedCategoryActivity"/>
-        </activity>
-        <activity android:name=".view.GridSelectedCategoryActivity"
+        <activity android:name=".view.LicenseActivity"
         android:parentActivityName=".view.MainActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.MainActivity"/>
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view.MainActivity"/>
+        </activity>
+        <activity
+                android:name=".view.SelectedImageActivity"
+                android:parentActivityName=".view.GridSelectedCategoryActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view.GridSelectedCategoryActivity"/>
+        </activity>
+        <activity
+                android:name=".view.GridSelectedCategoryActivity"
+                android:parentActivityName=".view.MainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view.MainActivity"/>
         </activity>
         <activity android:name=".view.MainActivity">
             <intent-filter>
