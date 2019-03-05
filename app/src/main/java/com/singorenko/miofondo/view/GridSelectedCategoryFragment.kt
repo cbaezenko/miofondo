@@ -77,7 +77,13 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener, GridS
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        fillCategorySelectedList(selectedCategory)
+        val prefix: String = if(twoPanes){
+            mConstants.tablet
+        }else{
+            mConstants.phone
+        }
+
+        fillCategorySelectedList(prefix+selectedCategory)
         rv_grid_selected_category.layoutManager = GridLayoutManager(context, spanCounts, RecyclerView.VERTICAL, false)
     }
 

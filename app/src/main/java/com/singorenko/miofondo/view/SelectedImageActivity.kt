@@ -14,8 +14,8 @@ class SelectedImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selected_image)
 
-        if(intent.getStringExtra(Companion.ARG_URL_IMAGE)!=null){
-            urlImage = intent.getStringExtra(Companion.ARG_URL_IMAGE)
+        if(intent.getStringExtra(ARG_URL_IMAGE)!=null){
+            urlImage = intent.getStringExtra(ARG_URL_IMAGE)
 
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, SelectedImageFragment.newInstance(false, urlImage))
@@ -27,6 +27,6 @@ class SelectedImageActivity : AppCompatActivity() {
     }
 
     companion object {
-        public const val ARG_URL_IMAGE = "urlImage"
+        const val ARG_URL_IMAGE = "urlImage"
     }
 }

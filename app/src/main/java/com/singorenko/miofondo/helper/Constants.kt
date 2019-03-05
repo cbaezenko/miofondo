@@ -1,6 +1,13 @@
 package com.singorenko.miofondo.helper
 
 class Constants{
+
+    val phoneMainCategory: String = "phoneMainCategory"
+    val tabletMainCategory: String = "tabletMainCategory"
+
+    val urlImage: String = "urlImage"
+    val nameCategory: String = "nameCategory"
+
     val argentinaFolder: String = "Argentina"
     val australia: String ="Australia"
     val brazilFolder: String ="Brazil"
@@ -23,4 +30,7 @@ class Constants{
     val usaFolder: String ="USA"
 
     val defaultEmpty: String= "DefaultEmpty"
+
+    val phone: String = "phone"
+    val tablet: String = "tablet"
 }
