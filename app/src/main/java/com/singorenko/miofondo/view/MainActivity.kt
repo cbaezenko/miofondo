@@ -1,6 +1,7 @@
 package com.singorenko.miofondo.view
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -9,11 +10,17 @@ import android.view.MenuItem
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.singorenko.miofondo.R
 import com.singorenko.miofondo.helper.Constants
+import com.singorenko.miofondo.manager.UrlManagerListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListener,
- GridSelectedCategoryFragment.GridSelectedCategoryListener
+ GridSelectedCategoryFragment.GridSelectedCategoryListener, UrlManagerListener
 {
+    override fun onUrlIntentRequest(urlString: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlString))
+        startActivity(intent)
+    }
+
     var twoPanes: Boolean = false
     val mConstants: Constants = Constants()
 
