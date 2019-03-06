@@ -17,7 +17,7 @@
                     android:paddingTop="16dp"
                     android:layout_gravity="center"
                     android:textStyle="italic"
-                    android:textColor="@android:color/holo_blue_dark"
+                    android:textColor="@color/colorAccent"
                     android:id="@+id/privacy_policy_button"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:text="@string/policy_privacy_title"
