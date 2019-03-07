@@ -20,6 +20,7 @@
         </activity>
         <activity
                 android:name=".view.SelectedImageActivity"
+                android:launchMode="singleInstance"
                 android:parentActivityName=".view.GridSelectedCategoryActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -27,12 +28,14 @@
         </activity>
         <activity
                 android:name=".view.GridSelectedCategoryActivity"
-                android:parentActivityName=".view.MainActivity">
+                android:parentActivityName=".view.MainActivity"
+        android:launchMode="singleInstance">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view.MainActivity"/>
         </activity>
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MainActivity"
+        android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
