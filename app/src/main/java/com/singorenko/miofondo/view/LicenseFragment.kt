@@ -22,6 +22,10 @@ class LicenseFragment : Fragment(), View.OnClickListener {
                 val urlPrivacyPolicy: String = getString(R.string.policy_privacy_url_link)
                 urlManager.onUrlIntentRequest(urlPrivacyPolicy)
             }
+            R.id.button_github_link ->{
+                val urlGithub: String = getString(R.string.github_url_link)
+                urlManager.onUrlIntentRequest(urlGithub)
+            }
         }
     }
 
@@ -50,6 +54,7 @@ class LicenseFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         privacy_policy_button.setOnClickListener(this)
+        button_github_link.setOnClickListener(this)
     }
 
     companion object {

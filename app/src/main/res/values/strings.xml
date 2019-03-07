@@ -15,6 +15,9 @@
     <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
 
+    <string name="button_title_github">Code on Github</string>
+    <string name="github_url_link">https://github.com/cbaezenko/miofondo</string>
+
     <string name="policy_privacy_title">Read our policy privacy</string>
     <string name="policy_privacy_url_link">http://www.google.es</string>
     <string name="licenses"><b>Licenses</b>\n\nAndroid Components\nAndroid Open Source Project
