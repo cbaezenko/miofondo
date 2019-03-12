@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity(), GridCategoryFragment.GridCategoryListe
         R.id.action_licenses -> {
             if(twoPanes){
                 supportFragmentManager.beginTransaction()
-                    .add(R.id.fragment_container_selected, LicenseFragment.newInstance())
+                    .replace(R.id.fragment_container_selected, LicenseFragment.newInstance())
                     .commit()
             }else {
                 val intent = Intent(this, LicenseActivity::class.java)
