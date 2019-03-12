@@ -4,3 +4,5 @@ This Android Application is completely made with Kotlin to show the interaction 
 
 The complete code can be found between the folders, except for the google-services.json that can be obtained on the Firebase console.
 The application also uses a default key for ads.
+
+![phone_wallpaper_gif](phone_wallpaper_gif.gif)
