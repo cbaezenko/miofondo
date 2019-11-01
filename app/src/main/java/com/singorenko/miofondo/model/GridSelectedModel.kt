@@ -8,7 +8,6 @@ import com.singorenko.miofondo.helper.Constants
 
 class GridSelectedModel(private val gridSelectedPresenter: GridSelectedPresenter) : GridSelectedManager.Model {
 
-    private val constants = Constants()
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val tag: String = "GridSelectedModel"
     private var mArrayListImageFromDataBase: ArrayList<String> = ArrayList()
@@ -20,7 +19,7 @@ class GridSelectedModel(private val gridSelectedPresenter: GridSelectedPresenter
                 if (task.isSuccessful) {
                     for (document in task.result!!) {
                         Log.d(tag, document.id + " => " + document.data)
-                        mArrayListImageFromDataBase.add(document.get(constants.urlImage) as String)
+                        mArrayListImageFromDataBase.add(document.get(Constants.urlImage) as String)
                     }
                     gridSelectedPresenter.getUrlImagesView(mArrayListImageFromDataBase)
                 } else {

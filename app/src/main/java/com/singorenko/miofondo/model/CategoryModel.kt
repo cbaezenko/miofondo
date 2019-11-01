@@ -1,3 +1,3 @@
 package com.singorenko.miofondo.model
 
-class CategoryModel (val title: String, val urlImage: String = "")
+data class CategoryModel (var title: String, var urlImage: String = "")

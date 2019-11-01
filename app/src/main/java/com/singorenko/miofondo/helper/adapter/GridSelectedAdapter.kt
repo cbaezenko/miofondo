@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.singorenko.miofondo.R
 import com.singorenko.miofondo.manager.CategorySelectedListener
-import com.singorenko.miofondo.view.SelectedImageActivity
+//import com.singorenko.miofondo.view.SelectedImageActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid_selected_category.view.*
 
@@ -21,7 +23,9 @@ class GridSelectedAdapter(
     val twoPanes: Boolean
 ) :
     RecyclerView.Adapter<GridSelectedAdapter.GridSelectedViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridSelectedViewHolder {
+        Log.d("TAG", "onCreateViewHolder")
         return GridSelectedViewHolder(
             LayoutInflater.from(context).inflate(
                 R.layout.item_grid_selected_category,
@@ -45,9 +49,13 @@ class GridSelectedAdapter(
            if(twoPanes) {
                mCategorySelectedListener.onClickCategorySelected(categorySelectedList[adapterPosition])
            }else{
-                val intent = Intent(context, SelectedImageActivity::class.java)
-               intent.putExtra(SelectedImageActivity.ARG_URL_IMAGE, categorySelectedList[adapterPosition])
-               context.startActivity(intent)
+               var navController = Navigation.findNavController(v!!)
+               val bundle = bundleOf("SelectedPhoto" to categorySelectedList[adapterPosition])
+               navController.navigate(R.id.action_gridSelectedCategoryFragment_to_selectedImageFragment, bundle)
+
+//                val intent = Intent(context, SelectedImageActivity::class.java)
+//               intent.putExtra(SelectedImageActivity.ARG_URL_IMAGE, categorySelectedList[adapterPosition])
+//               context.startActivity(intent)
            }
         }
 

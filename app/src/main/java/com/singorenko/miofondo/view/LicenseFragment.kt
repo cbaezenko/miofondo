@@ -31,23 +31,13 @@ class LicenseFragment : Fragment(), View.OnClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        try {
-            urlManager = context as UrlManagerListener
-        } catch (e: ClassCastException) {
+        try { urlManager = context as UrlManagerListener }
+        catch (e: ClassCastException) {
             throw ClassCastException(activity.toString() + " must implement UrlManagerListener")
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_license, container, false)
     }
 
@@ -59,10 +49,6 @@ class LicenseFragment : Fragment(), View.OnClickListener {
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            LicenseFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
+        fun newInstance() = LicenseFragment()
     }
 }

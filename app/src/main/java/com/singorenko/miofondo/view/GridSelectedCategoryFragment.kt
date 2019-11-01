@@ -2,6 +2,7 @@ package com.singorenko.miofondo.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +38,6 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener, GridS
     private var twoPanes: Boolean = false
     private var selectedCategory: String? = ""
     private val mPresenter: GridSelectedManager.Presenter = GridSelectedPresenter(this)
-    private val mConstants: Constants = Constants()
 
     interface GridSelectedCategoryListener {
         fun onGridSelectedCategoryListener(string: String)
@@ -55,6 +55,11 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener, GridS
         arguments?.let {
             twoPanes = it.getBoolean(ARG_TWO_PANES)
             selectedCategory = it.getString(ARG_SELECTED_CATEGORY)
+            Log.d("TAG", "twoPanes $twoPanes selectedCategory $selectedCategory")
+            if (!twoPanes) {
+                selectedCategory = arguments!!.getString("SelectedCategory")
+            }
+            Log.d("GridSelectedCategory", "SelectedCategory from arguments $selectedCategory")
         }
     }
 
@@ -67,28 +72,21 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener, GridS
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_grid_selected_category, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val prefix: String = if(twoPanes){
-            mConstants.tablet
-        }else{
-            mConstants.phone
-        }
+        val prefix: String = if(twoPanes){ Constants.tablet } else{ Constants.phone }
 
         fillCategorySelectedList(prefix+selectedCategory)
         rv_grid_selected_category.layoutManager = GridLayoutManager(context, spanCounts, RecyclerView.VERTICAL, false)
     }
 
     private fun fillCategorySelectedList(selectedCategory: String?) {
-        if (selectedCategory != null && selectedCategory != mConstants.defaultEmpty) {
+        if (selectedCategory != null && selectedCategory != Constants.defaultEmpty) {
             mPresenter.getUrlImagesModel(selectedCategory)
         }
     }

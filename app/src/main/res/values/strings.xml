@@ -13,7 +13,7 @@
     <string name="toolbar_title_about_app">About App</string>
 
     <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_app_id">ca-app-pub-6535027582970176~4170870373</string>
 
     <string name="button_title_github">Code on Github</string>
     <string name="github_url_link">https://github.com/cbaezenko/miofondo</string>

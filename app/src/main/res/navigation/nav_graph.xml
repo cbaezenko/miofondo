@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/gridCategoryFragment">
+
+    <fragment
+            android:id="@+id/gridCategoryFragment"
+            android:name="com.singorenko.miofondo.view.GridCategoryFragment"
+            android:label="fragment_grid_categoy"
+            tools:layout="@layout/fragment_grid_categoy" >
+        <action
+                android:id="@+id/action_gridCategoryFragment_to_gridSelectedCategoryFragment"
+                app:destination="@id/gridSelectedCategoryFragment" />
+        <action
+                android:id="@+id/action_gridCategoryFragment_to_licenseFragment"
+                app:destination="@id/licenseFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/gridSelectedCategoryFragment"
+            android:name="com.singorenko.miofondo.view.GridSelectedCategoryFragment"
+            android:label="fragment_grid_selected_category"
+            tools:layout="@layout/fragment_grid_selected_category" >
+        <action
+                android:id="@+id/action_gridSelectedCategoryFragment_to_selectedImageFragment"
+                app:destination="@id/selectedImageFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/selectedImageFragment"
+            android:name="com.singorenko.miofondo.view.SelectedImageFragment"
+            android:label="fragment_selected_image"
+            tools:layout="@layout/fragment_selected_image" >
+        <argument
+                android:name="SelectedCategory"
+                app:argType="string" />
+    </fragment>
+    <fragment
+            android:id="@+id/licenseFragment"
+            android:name="com.singorenko.miofondo.view.LicenseFragment"
+            android:label="fragment_license"
+            tools:layout="@layout/fragment_license" />
+</navigation>
