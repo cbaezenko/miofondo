@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.singorenko.miofondo.R
+import com.singorenko.miofondo.databinding.FragmentGridSelectedCategoryBinding
 import com.singorenko.miofondo.helper.Constants
 import com.singorenko.miofondo.helper.adapter.GridSelectedAdapter
 import com.singorenko.miofondo.manager.CategorySelectedListener
@@ -23,6 +25,8 @@ private const val ARG_TWO_PANES = "twoPanes"
 private const val ARG_SELECTED_CATEGORY = "selectedCategory"
 
 class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener, GridSelectedManager.View {
+
+    private lateinit var recyclerViewGridSeletecCategory: RecyclerView
 
     /**
      * set the arrayListUrl with FireStore data to fill the recycler adapter
@@ -73,8 +77,14 @@ class GridSelectedCategoryFragment : Fragment(), CategorySelectedListener, GridS
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_grid_selected_category, container, false)
+        val binding: FragmentGridSelectedCategoryBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_grid_selected_category, container, false)
+        return binding.root
     }
+
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        recyclerViewGridSeletecCategory = bind
+//    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

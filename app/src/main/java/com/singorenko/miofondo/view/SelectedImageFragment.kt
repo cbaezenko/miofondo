@@ -11,11 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 
 import com.singorenko.miofondo.R
+import com.singorenko.miofondo.databinding.FragmentSelectedImageBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_selected_image.*
 import java.io.IOException
@@ -40,7 +42,8 @@ class SelectedImageFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_selected_image, container, false)
+        val binding: FragmentSelectedImageBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_selected_image, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

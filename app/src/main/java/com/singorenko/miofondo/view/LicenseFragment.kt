@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 
 import com.singorenko.miofondo.R
+import com.singorenko.miofondo.databinding.FragmentLicenseBinding
 import com.singorenko.miofondo.manager.UrlManagerListener
 import kotlinx.android.synthetic.main.fragment_license.*
 import java.lang.ClassCastException
@@ -38,7 +40,8 @@ class LicenseFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_license, container, false)
+        val binding: FragmentLicenseBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_license, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

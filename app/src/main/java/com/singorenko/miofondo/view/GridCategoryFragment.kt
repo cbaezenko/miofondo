@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
@@ -13,6 +14,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.singorenko.miofondo.R
+import com.singorenko.miofondo.databinding.FragmentGridCategoyBinding
 import com.singorenko.miofondo.helper.adapter.GridCategoryAdapter
 import com.singorenko.miofondo.manager.CategoryAdapterListener
 import com.singorenko.miofondo.manager.GridCategoryManager
@@ -55,7 +57,8 @@ class GridCategoryFragment : Fragment(), CategoryAdapterListener, GridCategoryMa
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_grid_categoy, container, false)
+        val binding: FragmentGridCategoyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_grid_categoy, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
